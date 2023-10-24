@@ -1,0 +1,28 @@
+query U {
+  users{
+    id
+    firstName
+    lastName
+  }
+}
+
+mutation AU($user: UserInput!) {
+  addUser(user: $user) {
+    id
+    firstName
+    lastName
+  }
+}
+
+mutation UU($updateUser: UserUpdateInput!) {
+  updateUser(user: $updateUser) {
+    id
+    firstName
+    lastName
+  }
+}
+
+mutation DU($deleteUserId: String!){
+  deleteUser(id: $deleteUserId)
+}
+

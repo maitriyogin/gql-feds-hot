@@ -1,0 +1,27 @@
+query C {
+  cars{
+    id
+    registrationNumber
+
+  }
+}
+
+mutation AC($car: CarInput!) {
+  addCar(car: $car) {
+    id
+    registrationNumber
+  }
+}
+
+mutation UC($updateCar: CarUpdateInput!) {
+  updateCar(car: $updateCar) {
+    id
+    registrationNumber
+    chargerId
+  }
+}
+
+mutation DU($deleteCarId: String!){
+  deleteCar(id: $deleteCarId)
+}
+

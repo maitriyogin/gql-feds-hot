@@ -1,0 +1,169 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.2"),
+  @core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
+{
+  query: Query
+  mutation: Mutation
+}
+
+directive @core(as: String, feature: String!, for: core__Purpose) repeatable on SCHEMA
+
+directive @join__field(graph: join__Graph, provides: join__FieldSet, requires: join__FieldSet) on FIELD_DEFINITION
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
+
+type Car
+  @join__owner(graph: CAR)
+  @join__type(graph: CAR, key: "id")
+{
+  batterySize: Int @join__field(graph: CAR)
+  charger: Charger @join__field(graph: CAR)
+  chargerId: String @join__field(graph: CAR)
+  id: ID! @join__field(graph: CAR)
+  model: String @join__field(graph: CAR)
+  modelYear: String @join__field(graph: CAR)
+  name: String @join__field(graph: CAR)
+  registrationNumber: String @join__field(graph: CAR)
+  user: User @join__field(graph: CAR)
+  userId: String @join__field(graph: CAR)
+  vin: String @join__field(graph: CAR)
+}
+
+input CarInput {
+  batterySize: Int
+  chargerId: String
+  model: String
+  modelYear: String
+  name: String
+  registrationNumber: String
+  userId: String
+  vin: String
+}
+
+input CarUpdateInput {
+  batterySize: Int
+  chargerId: String
+  id: String!
+  model: String
+  modelYear: String
+  name: String
+  registrationNumber: String
+  userId: String
+  vin: String
+}
+
+type Charger
+  @join__owner(graph: CHARGER)
+  @join__type(graph: CHARGER, key: "id")
+  @join__type(graph: CAR, key: "id")
+{
+  cars: [Car] @join__field(graph: CAR)
+  color: String @join__field(graph: CHARGER)
+  id: ID! @join__field(graph: CHARGER)
+  productName: String @join__field(graph: CHARGER)
+  serialNumber: String @join__field(graph: CHARGER)
+  status: String @join__field(graph: CHARGER)
+  user: User @join__field(graph: CHARGER)
+  userId: String @join__field(graph: CHARGER)
+  vendor: String @join__field(graph: CHARGER)
+}
+
+input ChargerInput {
+  color: String
+  productName: String
+  serialNumber: String
+  status: String
+  userId: String
+  vendor: String
+}
+
+input ChargerUpdateInput {
+  color: String
+  id: String!
+  productName: String
+  serialNumber: String
+  status: String
+  userId: String
+  vendor: String
+}
+
+type Mutation {
+  addCar(car: CarInput!): Car @join__field(graph: CAR)
+  addCharger(charger: ChargerInput!): Charger @join__field(graph: CHARGER)
+  addUser(user: UserInput!): User @join__field(graph: USER)
+  deleteCar(id: String!): String @join__field(graph: CAR)
+  deleteCharger(id: String!): String @join__field(graph: CHARGER)
+  deleteUser(id: String!): String @join__field(graph: USER)
+  updateCar(car: CarUpdateInput!): Car @join__field(graph: CAR)
+  updateCharger(charger: ChargerUpdateInput!): Charger @join__field(graph: CHARGER)
+  updateUser(user: UserUpdateInput!): User @join__field(graph: USER)
+}
+
+type Query {
+  cars: [Car] @join__field(graph: CAR)
+  chargers: [Charger] @join__field(graph: CHARGER)
+  users: [User] @join__field(graph: USER)
+}
+
+type User
+  @join__owner(graph: USER)
+  @join__type(graph: USER, key: "id")
+  @join__type(graph: CAR, key: "id")
+  @join__type(graph: CHARGER, key: "id")
+{
+  address: String @join__field(graph: USER)
+  age: Int @join__field(graph: USER)
+  cars: [Car] @join__field(graph: CAR)
+  chargers: [Charger] @join__field(graph: CHARGER)
+  dogname: String @join__field(graph: USER)
+  email: String @join__field(graph: USER)
+  firstName: String @join__field(graph: USER)
+  id: ID! @join__field(graph: USER)
+  lastName: String @join__field(graph: USER)
+  nationalSecurity: String @join__field(graph: USER)
+}
+
+input UserInput {
+  address: String
+  age: Int
+  dogname: String
+  email: String
+  firstName: String
+  lastName: String
+  nationalSecurity: String
+}
+
+input UserUpdateInput {
+  address: String
+  age: Int
+  dogname: String
+  email: String
+  firstName: String
+  id: String!
+  lastName: String
+  nationalSecurity: String
+}
+
+enum core__Purpose {
+  """
+  `EXECUTION` features provide metadata necessary to for operation execution.
+  """
+  EXECUTION
+
+  """
+  `SECURITY` features provide metadata necessary to securely resolve fields.
+  """
+  SECURITY
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  CAR @join__graph(name: "car" url: "http://car-srv:4001")
+  CHARGER @join__graph(name: "charger" url: "http://charger-srv:4000")
+  USER @join__graph(name: "user" url: "http://user-srv:4002")
+}

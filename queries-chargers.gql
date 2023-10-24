@@ -1,0 +1,32 @@
+query CH {
+  chargers {
+    id
+    serialNumber
+
+    cars {
+      id
+      registrationNumber
+    }
+    user{
+      firstName
+    }
+  }
+}
+
+mutation ACH($charger: ChargerInput!) {
+  addCharger(charger: $charger) {
+    id
+    serialNumber
+  }
+}
+
+mutation UCH($updateCharger: ChargerUpdateInput!) {
+  updateCharger(charger: $updateCharger) {
+   id
+   serialNumber
+  }
+}
+
+mutation DU($deleteCarId: String!){
+  deleteCar(id: $deleteCarId)
+}

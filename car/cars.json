@@ -1,0 +1,34 @@
+[
+  {
+    "description": "Beställd",
+    "status": "GODK"
+  },
+  {
+    "description": "Makulerad",
+    "status": "MAK"
+  },
+  {
+    "description": "Väntar offert",
+    "status": "OFF"
+  },
+  {
+    "description": "Accepterad",
+    "status": "PAGAR"
+  },
+  {
+    "description": "Registrerad",
+    "status": "REG"
+  },
+  {
+    "description": "Slutförd",
+    "status": "SLUTFÖ"
+  },
+  {
+    "description": "Utförd",
+    "status": "UTFÖRD"
+  },
+  {
+    "description": "Fakturerad",
+    "status": "ÖVERF"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "name": "gql-fedarations",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:maitriyogin/gql-fedarations.git",
+  "author": "maitriyogin <stephen.white@mac.com>",
+  "license": "MIT",
+  "scripts": {
+    "sk:l": "skaffold dev -p local-profile",
+    "sk:r": "skaffold dev -p remote-profile"
+  }
+}

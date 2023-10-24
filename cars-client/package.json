@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "startMain": "next start",
+    "start": "next start",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.6",
+    "graphql": "^16.8.1",
+    "isomorphic-unfetch": "^4.0.2",
+    "next": "latest",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/import-types-preset": "^3.0.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-operations": "4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "4.0.0",
+    "@types/node": "^20.8.7",
+    "@types/react": "^18.2.31",
+    "graphql-codegen-apollo-next-ssr": "^1.7.4",
+    "typescript": "^5.2.2"
+  }
+}

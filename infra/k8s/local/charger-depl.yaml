@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: charger-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: charger
+  template:
+    metadata:
+      labels:
+        app: charger
+    spec:
+      containers:
+        - name: charger
+          image: maitriyogin/charger
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: charger-srv
+spec:
+  selector:
+    app: charger
+  ports:
+    - name: charger
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: charger-node-srv
+spec:
+  type: NodePort
+  selector:
+    app: charger
+  ports:
+    - name: charger
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+      nodePort: 30112

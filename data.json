@@ -1,0 +1,23 @@
+{
+  "user": {
+    "firstName": "Jack",
+    "lastName":"Black"
+  },
+  "updateUser": {
+    "id": "623b0da2624e813c9b5e3eed",
+    "firstName": "Stephen",
+    "lastName":"White"
+  },
+  "deleteUserId": "623b0b922a573fd02a8323de",
+  "charger": {
+    "serialNumber":"ACDC"
+  },
+  "updateCharger": {
+    "id":"623b3aecadc72ad64c1c0c28",
+    "userId": "623b3a04d3f7bbdc7dea9272"
+  },
+
+  "car": {"registrationNumber":"SHM96B", "name":"ID4"},
+  "updateCar": {"id":"623b39f05f079e5adac817fe", "userId":"623b3a04d3f7bbdc7dea9272", "chargerId":"623b3aecadc72ad64c1c0c28"},
+  "deleteCarId": ""
+}

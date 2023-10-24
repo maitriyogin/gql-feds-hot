@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+    #    - host: local.swfed.dev
+    - http:
+        paths:
+          #          - path: /?(.*)
+          #            pathType: Prefix
+          #            backend:
+          #              service:
+          #                name: cars-client-srv
+          #                port:
+          #                  number: 3000
+          - path: /charger
+            pathType: Prefix
+            backend:
+              service:
+                name: charger-srv
+                port:
+                  number: 4000
+          - path: /car
+            pathType: Prefix
+            backend:
+              service:
+                name: car-srv
+                port:
+                  number: 4001
+          - path: /user
+            pathType: Prefix
+            backend:
+              service:
+                name: user-srv
+                port:
+                  number: 4002
+          - path: /graphql
+            pathType: Prefix
+            backend:
+              service:
+                name: esl-query-srv
+                port:
+                  number: 4003
+#  tls:
+#    - hosts:
+#        - local.swgql.com
+#      secretName: my-tls-secret

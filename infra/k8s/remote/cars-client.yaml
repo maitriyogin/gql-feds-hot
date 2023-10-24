@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cars-client-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cars-client
+  template:
+    metadata:
+      labels:
+        app: cars-client
+    spec:
+      containers:
+        - name: cars-client
+          image: gcr.io/fed-dev-343215/cars-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cars-client-srv
+spec:
+  selector:
+    app: cars-client
+  ports:
+    - name: cars-client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

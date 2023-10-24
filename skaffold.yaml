@@ -1,0 +1,103 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+profiles:
+  - name: remote-profile
+    deploy:
+      kubectl:
+        manifests:
+          - ./infra/k8s/remote/*
+    build:
+      #      local:
+      #        push: false
+      googleCloudBuild:
+        projectId: fed-dev-343215
+      artifacts:
+        #        - image: gcr.io/fed-dev-343215/cars-client
+        #          context: cars-client
+        #          docker:
+        #            dockerfile: Dockerfile
+        #          sync:
+        #            manual:
+        #              - src: "src/**/*.ts"
+        #                dest: .
+        - image: gcr.io/fed-dev-343215/user
+          context: user
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: gcr.io/fed-dev-343215/car
+          context: car
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: gcr.io/fed-dev-343215/charger
+          context: charger
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: gcr.io/fed-dev-343215/esl-query
+          context: esl-query
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+  - name: local-profile
+    deploy:
+      kubectl:
+        manifests:
+          - ./infra/k8s/local/*
+    build:
+      local:
+        push: false
+      artifacts:
+        #        - image: maitriyogin/cars-client
+        #          context: cars-client
+        #          docker:
+        #            dockerfile: Dockerfile
+        #          sync:
+        #            manual:
+        #              - src: "src/**/*.ts"
+        #                dest: .
+        - image: maitriyogin/user
+          context: user
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: maitriyogin/car
+          context: car
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: maitriyogin/charger
+          context: charger
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
+        - image: maitriyogin/esl-query
+          context: esl-query
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.ts"
+                dest: .
