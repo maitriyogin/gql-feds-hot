@@ -1,0 +1,4 @@
+extend type Charger{
+  cars: [Car] @delegate(path:"carsByCharger(chargerId: $fields:id)")
+}
+

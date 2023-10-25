@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WLVVdV8Ry0MswrhgS/FcfnBzjNoBKpo1P/7qRkKQ++s=",
+  "Source": "Vpp.Gateway",
+  "BasePath": "_content/Vpp.Gateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

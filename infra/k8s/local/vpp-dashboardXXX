@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vpp-dashboard-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vpp-dashboard
+  template:
+    metadata:
+      labels:
+        app: vpp-dashboard
+    spec:
+      containers:
+        - name: vpp-dashboard
+          image: maitriyogin/vpp-dashboard
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vpp-dashboard-srv
+spec:
+  selector:
+    app: vpp-dashboard
+  ports:
+    - name: vpp-dashboard
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: caris-client-node-srv
+spec:
+  type: NodePort
+  selector:
+    app: vpp-dashboard
+  ports:
+    - name: vpp-dashboard
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30001

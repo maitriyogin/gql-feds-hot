@@ -19,32 +19,32 @@ spec:
           #                name: cars-client-srv
           #                port:
           #                  number: 3000
-          - path: /charger
+          - path: /chargers(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: charger-srv
                 port:
                   number: 4000
-          - path: /car
+          - path: /cars(/|$)(.*)
             pathType: Prefix
             backend:
               service:
                 name: car-srv
                 port:
                   number: 4001
-          - path: /user
+#          - path: /user
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: user-srv
+#                port:
+#                  number: 4002
+          - path: /gw(/|$)(.*)
             pathType: Prefix
             backend:
               service:
-                name: user-srv
-                port:
-                  number: 4002
-          - path: /graphql
-            pathType: Prefix
-            backend:
-              service:
-                name: esl-query-srv
+                name: gateway-srv 
                 port:
                   number: 4003
 #  tls:

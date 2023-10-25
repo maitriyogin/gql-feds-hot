@@ -27,7 +27,7 @@ spec:
     - name: charger
       protocol: TCP
       port: 4000
-      targetPort: 4000
+      targetPort: 80 
 ---
 apiVersion: v1
 kind: Service
@@ -41,5 +41,5 @@ spec:
     - name: charger
       protocol: TCP
       port: 4000
-      targetPort: 4000
+      targetPort: 80 
       nodePort: 30112

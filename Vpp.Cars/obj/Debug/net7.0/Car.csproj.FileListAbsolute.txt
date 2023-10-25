@@ -1,0 +1,6 @@
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.csproj.AssemblyReference.cache
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.GeneratedMSBuildEditorConfig.editorconfig
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.AssemblyInfoInputs.cache
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.AssemblyInfo.cs
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.csproj.CoreCompileInputs.cache
+/Users/stephenwhite/projects/hot/Car/obj/Debug/net7.0/Car.MvcApplicationPartsAssemblyInfo.cache
