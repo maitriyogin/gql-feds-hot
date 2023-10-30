@@ -61,14 +61,14 @@ profiles:
       local:
         push: false
       artifacts:
-        #        - image: maitriyogin/vpp-dashboard
-        #          context: vpp-dashboard
-        #          docker:
-        #            dockerfile: Dockerfile
-        #          sync:
-        #            manual:
-        #              - src: "src/**/*.ts"
-        #                dest: .
+        - image: maitriyogin/vpp-dashboard
+          context: vpp-dashboard
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "src/**/*.*"
+                dest: .
         - image: maitriyogin/car
           context: Vpp.Cars
           docker:

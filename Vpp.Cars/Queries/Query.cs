@@ -13,5 +13,9 @@ public class Query
         return CarRepository.GetCars();
     }
 
-    public Task<List<Car>> GetCarsByCharger([Service] CarRepository CarRepository, string chargerId) => CarRepository.GetCarsByCharger(chargerId);
+    public Task<List<Car>> GetCarsByCharger([Service] CarRepository CarRepository, string chargerId)
+    {
+        Console.WriteLine("############# QUERY GETCARSBYCHARGER : " + chargerId);
+        return CarRepository.GetCarsByCharger(chargerId);
+    }
 }
