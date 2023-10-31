@@ -93,3 +93,36 @@ profiles:
             manual:
               - src: "*.*"
                 dest: .
+  - name: dev-profile
+    deploy:
+      kubectl:
+        manifests:
+          - ./infra/k8s/dev/*
+    build:
+      local:
+        push: false
+      artifacts:
+        - image: maitriyogin/car
+          context: Vpp.Cars
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.cs"
+                dest: .
+        - image: maitriyogin/charger
+          context: Vpp.Chargers
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.cs"
+                dest: .
+        - image: maitriyogin/gateway
+          context: Vpp.Gateway
+          docker:
+            dockerfile: Dockerfile
+          sync:
+            manual:
+              - src: "*.*"
+                dest: .

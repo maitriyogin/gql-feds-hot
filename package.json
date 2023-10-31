@@ -6,6 +6,7 @@
   "author": "maitriyogin <stephen.white@mac.com>",
   "license": "MIT",
   "scripts": {
+    "sk:d": "skaffold dev -p dev-profile",
     "sk:l": "skaffold dev -p local-profile",
     "sk:r": "skaffold dev -p remote-profile"
   }

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: car
+  template:
+    metadata:
+      labels:
+        app: car
+    spec:
+      containers:
+        - name: car
+          image: maitriyogin/car
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: car-srv
+spec:
+  selector:
+    app: car
+  ports:
+    - name: car
+      protocol: TCP
+      port: 4001 
+      targetPort: 80 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: car-node-srv
+spec:
+  type: NodePort
+  selector:
+    app: car
+  ports:
+    - name: car
+      protocol: TCP
+      port: 4001 
+      targetPort: 80 
+      nodePort: 30111

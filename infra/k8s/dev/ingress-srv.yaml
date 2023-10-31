@@ -12,13 +12,6 @@ spec:
     #    - host: local.swfed.dev
     - http:
         paths:
-          - path: /app(/|$)(.*)
-            pathType: Prefix
-            backend:
-              service:
-                name: vpp-dashboard-srv 
-                port:
-                  number: 3000
           - path: /api/chargers(/|$)(.*)
             pathType: Prefix
             backend:
