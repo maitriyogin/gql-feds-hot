@@ -18,7 +18,7 @@ public class ChargerRepository
         }
     };
 
-    private static string MONGODB_URI = "mongodb://charger-mongo-srv:27017/";
+    private static string MONGODB_URI = "mongodb://vpp-mongo-srv:27017/";
     private MongoClient _client;
     private readonly IMongoCollection<Charger> _collection;
 
@@ -36,14 +36,20 @@ public class ChargerRepository
 
         _client = new MongoClient(connectionString);
         _collection = _client.GetDatabase("vpp").GetCollection<Charger>("chargers");
+        Console.WriteLine("###### CHARGERS " + _collection);
+        if (_collection == null)
+        {
+            _client.GetDatabase("vpp").CreateCollection("chargers");
+            _collection = _client.GetDatabase("vpp").GetCollection<Charger>("chargers");
+        }
 
-        Console.WriteLine("###### REPO INITIALISED");
+        Console.WriteLine("###### CHARGERS REPO INITIALISED");
         insert();
     }
 
     private void insert()
     {
-        Console.WriteLine("###### REPO INSERT");
+        Console.WriteLine("###### REPO CHARGER INSERT");
         try
         {
             // init collection with Car
@@ -58,7 +64,7 @@ public class ChargerRepository
             Console.WriteLine(e.Message);
         }
 
-        Console.WriteLine("###### REPO AFTER INSERT");
+        Console.WriteLine("###### REPO CHARGER AFTER INSERT");
     }
 
     public async Task<List<Charger>> GetChargers()

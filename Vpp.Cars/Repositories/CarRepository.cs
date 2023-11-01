@@ -19,7 +19,7 @@ public class CarRepository
         }
     };
 
-    private static string MONGODB_URI = "mongodb://car-mongo-srv:27017/";
+    private static string MONGODB_URI = "mongodb://vpp-mongo-srv:27017/";
     private MongoClient _client;
     private readonly IMongoCollection<Car> _collection;
 

@@ -9,38 +9,27 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    #    - host: local.swfed.dev
-    - http:
+#    - host: local.vopo.dev
+     - http:
         paths:
           - path: /api/chargers(/|$)(.*)
-            pathType: Prefix
+            pathType: Prefix 
             backend:
               service:
                 name: charger-srv
                 port:
                   number: 4000
           - path: /api/cars(/|$)(.*)
-            pathType: Prefix
+            pathType: Prefix 
             backend:
               service:
                 name: car-srv
                 port:
                   number: 4001
-#          - path: /user
-#            pathType: Prefix
-#            backend:
-#              service:
-#                name: user-srv
-#                port:
-#                  number: 4002
           - path: /api(/|$)(.*)
-            pathType: Prefix
+            pathType: Prefix 
             backend:
               service:
                 name: gateway-srv 
                 port:
                   number: 4003
-#  tls:
-#    - hosts:
-#        - local.swgql.com
-#      secretName: my-tls-secret
