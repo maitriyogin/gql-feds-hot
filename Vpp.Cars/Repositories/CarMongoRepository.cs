@@ -3,7 +3,7 @@ using MongoDB.Bson;
 using Vpp.Cars.Models;
 namespace Vpp.Cars.Repositories;
 
-public class CarRepository
+public class CarMongoRepository : ICarRepository
 {
     public static List<Car> _cars = new List<Car>()
     {
@@ -23,7 +23,7 @@ public class CarRepository
     private MongoClient _client;
     private readonly IMongoCollection<Car> _collection;
 
-    public CarRepository()
+    public CarMongoRepository()
     {
         // var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI");
         Console.WriteLine("###### INIT REPO : " + MONGODB_URI);

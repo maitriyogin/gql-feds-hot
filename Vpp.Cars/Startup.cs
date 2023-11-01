@@ -21,7 +21,7 @@ namespace Vpp.Cars
         {
             
             Console.WriteLine("####### CONFIGURE SERVICES");
-            services.AddSingleton<CarRepository>().AddGraphQLServer()
+            services.AddSingleton<CarMongoRepository>().AddGraphQLServer()
                 .AddQueryType<Query>()
                 .AddMutationType<
                     Mutation>()
